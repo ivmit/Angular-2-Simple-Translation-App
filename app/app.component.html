@@ -1,0 +1,12 @@
+<div class="container">
+    <h4>Translate: Hello World</h4>
+    <div class="btn-group">
+        <button *ngFor="let lang of supportedLanguages" (click)="selectLang(lang.value)" [class.btn-primary]="isCurrentLang(lang.value)" class="btn btn-default">{{lang.display}}</button>
+    </div>
+    <div>
+        <p>Translate with Pipe: <strong>{{ 'hello world' | translate }}</strong></p>
+        <p>Translate with Service: <strong>{{ translatedText }}</strong></p>
+    </div>
+
+
+</div>
