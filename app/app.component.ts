@@ -24,14 +24,20 @@ export class AppComponent implements OnInit {
 
     selectLang(lang: string){
        this._translate.use(lang);
-        this.refreshText();
     }
 
     refreshText(){
        this.translatedText = this._translate.instant('hello world');
     }
 
+    subscribeToLangChanged(){
+        return this._translate.onLangChanged.subscribe(x => this.refreshText());
+    }
+
     ngOnInit(){
+
+
+
         this.supportedLanguages = [
             {
                 display: 'English',
@@ -46,6 +52,9 @@ export class AppComponent implements OnInit {
                 value: 'zh'
             },
         ];
+        this.subscribeToLangChanged();
+        this._translate.setDefaultLang('en-US');
+        this._translate.enableFallback(true);
 
         this.selectLang(navigator.language);
     }

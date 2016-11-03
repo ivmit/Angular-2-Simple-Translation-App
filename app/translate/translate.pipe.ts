@@ -27,9 +27,9 @@ export class TranslatePipe implements PipeTransform {
     /**
      * translate the value passed to the pipe
      */
-    transform(value: string, args: any[]): any {
+    transform(value: string, args: string | string[]): any {
         if (!value) return;
-        return this._translate.instant(value);
+        return this._translate.instant(value, args);
     }
 
 }

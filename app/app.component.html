@@ -3,10 +3,26 @@
     <div class="btn-group">
         <button *ngFor="let lang of supportedLanguages" (click)="selectLang(lang.value)" [class.btn-primary]="isCurrentLang(lang.value)" class="btn btn-default">{{lang.display}}</button>
     </div>
-    <div>
-        <p>Translate with Pipe: <strong>{{ 'hello world' | translate }}</strong></p>
-        <p>Translate with Service: <strong>{{ translatedText }}</strong></p>
-    </div>
-
+    <p>
+        Translate With Pipe: <strong>{{ 'hello world' | translate }}</strong>
+    </p>
+    <p>
+        Translate with Service: <strong>{{ translatedText }}</strong>
+    </p>
+    <p>
+        Translate <strong class="text-muted">Hello, %0 %1!</strong>:
+        <br>
+        <strong>{{ 'hello greet' | translate:['Jane', 'Doe'] }}</strong>
+    </p>
+    <p>
+        Translate <strong class="text-muted">Well done %0</strong>:
+        <br>
+        <strong>{{ 'well done' | translate:'John' }}</strong>
+    </p>
+    <p>
+        Translate <strong class="text-muted">Good bye (fallback)</strong>:
+        <br>
+        <strong>{{ 'good bye' | translate }}</strong>
+    </p>
 
 </div>
